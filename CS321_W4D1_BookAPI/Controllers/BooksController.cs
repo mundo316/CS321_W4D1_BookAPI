@@ -29,15 +29,26 @@ namespace CS321_W4D1_BookAPI.Controllers
 
         // get specific book by id
         // GET api/books/:id
+        // TODO: convert domain model to apimodel
+        // GET api/books/:id
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // TODO: convert domain model to apimodel
-            var book = _bookService.Get(id);
+            var book = _bookService
+                .Get(id)
+                .ToApiModel(); // convert the Book into a BookModel
             if (book == null) return NotFound();
-            return Ok(book.ToApiModel());
+            return Ok(book);
+        }
+        [HttpGet("/api/authors/{id}/books")]
+        public IActionResult GetBooksForAuthor(int authorId)
+        {
+            return Ok(_bookService.GetBooksForAuthor(authorId)
+                .ToApiModels());
         }
 
+        [HttpGet("/api/publishers/publisherID/books")]
+        public IActionResult GetBooksForPublisher
         // create a new book
         // POST api/books
         [HttpPost]

@@ -3,6 +3,7 @@ using System.Linq;
 using CS321_W4D1_BookAPI.Data;
 using CS321_W4D1_BookAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using CS321_W4D1_BookAPI.Services;
 
 namespace CS321_W4D1_BookAPI.Services
 {
@@ -71,5 +72,21 @@ namespace CS321_W4D1_BookAPI.Services
         }
 
         // TODO: implement GetBooksForAuthor() method
-    }
+        IEnumerable<Book> GetBooksforAuthor(int authorId)
+        {
+            return _bookContext.Books
+                .Include(b => b.Publisher)
+                .Include(b => b.Author)
+                .Where(b => b.AuthorId == authorId)
+                .ToList();
+        }
+
+        public IEnumerable<Book> GetBooksForPublisher(int PublisherId)
+        {
+            return _bookContext.Books
+                .Include(b=>b.Author)
+                .Where(b=>b.PublisherId == publisherId)
+
+        }
+}
 }

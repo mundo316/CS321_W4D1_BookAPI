@@ -13,6 +13,7 @@ namespace CS321_W4D1_BookAPI.ApiModels
             return new AuthorModel
             {
                 // TODO: map Author properties to corresponding AuthorModel properties
+
             };
         }
 

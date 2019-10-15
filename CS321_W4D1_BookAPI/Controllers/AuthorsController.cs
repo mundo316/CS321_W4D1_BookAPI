@@ -15,16 +15,16 @@ namespace CS321_W4D1_BookAPI.Controllers
         // Constructor
         public AuthorsController(IAuthorService authorService)
         {
-            // TODO: keep a reference to the service so we can use below
+            //: keep a reference to the service so we can use below
             _authorService = authorService;
         }
 
-        // TODO: get all authors
+        //: get all authors
         // GET api/authors
         [HttpGet]
         public IActionResult Get()
         {
-            // TODO: return ApiModels instead of domain models
+            //: return ApiModels instead of domain models
             var authorModels = _authorService
                 .GetAll()
                 .ToApiModels();
@@ -36,7 +36,7 @@ namespace CS321_W4D1_BookAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            // TODO: return ApiModel instead of domain model
+            //: return ApiModel instead of domain model
             var author = _authorService
                 .Get(id)
                 .ToApiModel();
@@ -51,7 +51,7 @@ namespace CS321_W4D1_BookAPI.Controllers
         {
             try
             {
-                // TODO: convert the newAuthor to a domain model
+                //: convert the newAuthor to a domain model
                 // add the new author
                 _authorService.Add(newAuthor.ToDomainModel());
             }
@@ -66,18 +66,18 @@ namespace CS321_W4D1_BookAPI.Controllers
             return CreatedAtAction("Get", new { Id = newAuthor.Id }, newAuthor);
         }
 
-        // TODO: update an existing author
+        //: update an existing author
         // PUT api/authors/:id
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] AuthorModel updatedAuthor)
         {
-            // TODO: convert updatedAuthor to a domain model
+            //: convert updatedAuthor to a domain model
             var author = _authorService.Update(updatedAuthor.ToDomainModel());
             if (author == null) return NotFound();
             return Ok(author);
         }
 
-        // TODO: delete an existing author
+        //: delete an existing author
         // DELETE api/authors/:id
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

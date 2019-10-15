@@ -10,7 +10,7 @@ namespace CS321_W4D1_BookAPI.ApiModels
 
         public static BookModel ToApiModel(this Book needstobeconvertedbook)
         {
-            // TODO: map the Book domain object to a BookModel
+            //: map the Book domain object to a BookModel
             return new BookModel
             { 
                 Id = needstobeconvertedbook.Id,
@@ -33,7 +33,7 @@ namespace CS321_W4D1_BookAPI.ApiModels
 
         public static Book ToDomainModel(this BookModel bookModel)
         {                                   //  Id     = bookmodel.Id
-            // TODO: map the BookModel to a Book domain object
+            //: map the BookModel to a Book domain object
             return new Book
             {
                 

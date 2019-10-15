@@ -3,7 +3,7 @@ using System.Linq;
 using CS321_W4D1_BookAPI.Data;
 using CS321_W4D1_BookAPI.Models;
 using Microsoft.EntityFrameworkCore;
-using CS321_W4D1_BookAPI.Services;
+
 
 namespace CS321_W4D1_BookAPI.Services
 {
@@ -66,27 +66,28 @@ namespace CS321_W4D1_BookAPI.Services
 
         public void Remove(Book book)
         {
-            // TODO: remove the book
+            //: remove the book
             _bookContext.Books.Remove(book);
             _bookContext.SaveChanges();
         }
 
-        // TODO: implement GetBooksForAuthor() method
-        IEnumerable<Book> GetBooksforAuthor(int authorId)
-        {
-            return _bookContext.Books
-                .Include(b => b.Publisher)
-                .Include(b => b.Author)
-                .Where(b => b.AuthorId == authorId)
-                .ToList();
-        }
+        //: implement GetBooksForAuthor() method
 
         public IEnumerable<Book> GetBooksForPublisher(int PublisherId)
         {
             return _bookContext.Books
-                .Include(b=>b.Author)
-                .Where(b=>b.PublisherId == publisherId)
+                .Include(b => b.Author)
+                .Where(b => b.PublisherId == PublisherId);
 
         }
-}
+
+        public IEnumerable<Book> GetBooksForAuthor(int authorId)
+        {
+             return _bookContext.Books
+             .Include(b => b.Publisher)
+             .Include(b => b.Author)
+             .Where(b => b.AuthorId == authorId)
+             .ToList();
+        }
+    }
 }

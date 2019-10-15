@@ -20,16 +20,15 @@ namespace CS321_W4D1_BookAPI.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            // TODO: convert domain models to apimodels
+            //: convert domain models to apimodels
             var bookModels = _bookService
-                .GetAll();
+                .GetAll().ToApiModels();
 
             return Ok(bookModels);
         }
 
         // get specific book by id
-        // GET api/books/:id
-        // TODO: convert domain model to apimodel
+        //: convert domain model to apimodel
         // GET api/books/:id
         [HttpGet("{id}")]
         public IActionResult Get(int id)
@@ -47,18 +46,19 @@ namespace CS321_W4D1_BookAPI.Controllers
                 .ToApiModels());
         }
 
-        [HttpGet("/api/publishers/publisherID/books")]
-        public IActionResult GetBooksForPublisher
-        // create a new book
-        // POST api/books
+        //[HttpGet("/api/publishers/publisherID/books")]
+        //public IActionResult GetBooksForPublisher { }
+        //// create a new book
+        //// POST api/books
         [HttpPost]
         public IActionResult Post([FromBody] BookModel newBook)
         {
             try
             {
-                // TODO: convert apimodel to domain model
+                //: convert apimodel to domain model
+
                 // add the new book
-                _bookService.Add(newBook);
+                _bookService.Add(newBook.ToDomainModel());
             }
             catch (System.Exception ex)
             {
@@ -73,7 +73,7 @@ namespace CS321_W4D1_BookAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] BookModel updatedBook)
         {
-            var book = _bookService.Update(updatedBook);
+            var book = _bookService.Update(updatedBook.ToDomainModel());
             if (book == null) return NotFound();
             return Ok(book.ToApiModel());
         }

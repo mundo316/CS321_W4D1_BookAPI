@@ -13,13 +13,13 @@ namespace CS321_W4D1_BookAPI.Services
 
         public AuthorService(BookContext bookContext)
         {
-            // TODO: keep a reference to the AuthorContext in _AuthorContext
+            //: keep a reference to the AuthorContext in _AuthorContext
             _bookContext = bookContext;
         }
 
         public Author Add(Author Author)
         {
-            // TODO: implement add
+            //: implement add
             _bookContext.Authors.Add(Author);
             _bookContext.SaveChanges();
             return Author;
@@ -27,13 +27,13 @@ namespace CS321_W4D1_BookAPI.Services
 
         public Author Get(int id)
         {
-            // TODO: return the specified Author using Find()
+            //: return the specified Author using Find()
             return _bookContext.Authors.Find(id);
         }
 
         public IEnumerable<Author> GetAll()
         {
-            // TODO: return all Authors using ToList()
+            //: return all Authors using ToList()
             return _bookContext.Authors.ToList();
         }
 
@@ -63,7 +63,7 @@ namespace CS321_W4D1_BookAPI.Services
 
         public void Remove(Author Author)
         {
-            // TODO: remove the Author
+            //: remove the Author
             _bookContext.Authors.Remove(Author);
             _bookContext.SaveChanges();
         }

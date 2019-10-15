@@ -13,9 +13,10 @@ namespace CS321_W4D1_BookAPI.ApiModels
     public int PublicationYear { get; set; }
 
     public int AuthorId { get; set; }
-    public string Author { get; set; } // simple string
+    public string Author { get; set; } // simple string converts this type to a string
 
     public int PublisherId { get; set; }
-    public string Publisher { get; set; } // simple string
+    public string Publisher { get; set; } // simple string converts this type to a string
+
     }
 }
